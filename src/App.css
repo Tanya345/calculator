@@ -1,38 +1,43 @@
 .App {
   text-align: center;
+  background-color: #58409ae0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.calciBox{
+  display: grid;
+  grid-template-columns: repeat(4,auto);
+  grid-template-rows: repeat(4,auto);
+  background-color: pink;
+  height: 43vh;
+  grid-column-gap: 10px;
+  grid-row-gap: 5px;
+  padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.calciBtn{
+  border-radius: 20px;
+  font-weight: 650;
+  font-family:'Times New Roman', Times, serif;
 }
+.result{
+  display: flex;
+  flex-wrap: wrap;
+  background-color: black;
+    height: 31vh;
+    align-items: flex-end;
+    justify-content: end;
+    flex-direction: column;
+    padding: 6px 14px;
+    font-size: 2.2rem;
+    color: white;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+}
+.calciWrapper{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  width: 20rem;
+  background-color: #58409ae0;
+  height: 75vh;
+  padding-left: 0.6em;
+  padding-top: 0.6em;
 }
