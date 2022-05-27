@@ -4,7 +4,7 @@ import Calculator from './components/Calculator';
 function App() {
   return (
     <div className="App">
-      <h1 className='text-light' style={{ height: '9vh', margin: '0px', padding: '9px' }}>Calculator</h1>
+      <h1 className='text-light' style={{margin: '0px',background: 'steelblue',padding: '9px' }}>Calculator</h1>
       <Calculator />
     </div>
   );

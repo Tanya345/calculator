@@ -5,18 +5,22 @@ const specialChars = /[+\-*]/
 const Calculator = () => {
   const [state, setState] = useState(0)
   const [res, setRes] = useState(0)
-
   // useEffect(() => {
   //   console.log(state)
-  //   let ch = state[state.length - 1]
-  //   let str = state.slice(0, -1)
-  //   specialChars.test(ch) && setState(str)
-  //   setRes(eval(state))
+  //   // let ch = state[state.length - 1]
+  //   // let str = state.slice(0, -1)
+  //   // specialChars.test(ch) && setState(str)
+  //   // setRes(eval(state))
   // }, [state])
 
   const handleBtn = (e) => {
     let temp = e.target.value
     if (temp === '=') {
+      if (state.endsWith('+') || state.endsWith('-') || state.endsWith('*') || state.endsWith('/')) {
+        const newState = state.slice(0, -1)
+        setState(newState)
+      }
+      console.log(state)
       // let ch = state[state.length - 1]
       // let str = state.slice(0, -1)
       // specialChars.test(ch) && setState(str)
@@ -46,11 +50,11 @@ const Calculator = () => {
 
   }
   return (
-    <div className='d-flex align-items-center justify-content-center' style={{ height: '91vh', backgroundColor: '#141515' }}>
+    <div className='d-flex align-items-center justify-content-center mt-5 pt-5' style={{ backgroundColor: '#141515' }}>
       <div className="calciWrapper">
         <div className="result">
           {<h1 className='m-1 p-1'>{state}</h1>}
-          {<h4 className='m-1 p-1'>{res ? `= ${res}`: res}</h4>}
+          {<h4 className='m-1 p-1'>{res ? `= ${res}` : res}</h4>}
         </div>
         <div className='calciBox'>
           {arr.map((e, i) => {
