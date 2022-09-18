@@ -1,31 +1,22 @@
 import React, { useState, useEffect } from 'react'
 
-const arr = ['AC', 'LC', '%', '+', '9', '8', '7', '-', '6', '5', '4', '*', '3', '2', '1', '/', '0', '.', , '=']
+const arr = ['AC', 'LC', '%', '+', '9', '8', '7', '-', '6', '5', '4', '*', '3', '2', '1', '/', '0', '.', '=']
 const specialChars = /[+\-*]/
 const Calculator = () => {
   const [state, setState] = useState(0)
   const [res, setRes] = useState(0)
-  // useEffect(() => {
-  //   console.log(state)
-  //   // let ch = state[state.length - 1]
-  //   // let str = state.slice(0, -1)
-  //   // specialChars.test(ch) && setState(str)
-  //   // setRes(eval(state))
-  // }, [state])
 
   const handleBtn = (e) => {
     let temp = e.target.value
     if (temp === '=') {
       if (state.endsWith('+') || state.endsWith('-') || state.endsWith('*') || state.endsWith('/')) {
         const newState = state.slice(0, -1)
-        setState(newState)
+        // setState(newState)
+      setRes(eval(newState))
       }
-      console.log(state)
-      // let ch = state[state.length - 1]
-      // let str = state.slice(0, -1)
-      // specialChars.test(ch) && setState(str)
-      setRes(eval(state))
-      // console.log(res)
+      else{
+        setRes(eval(state))
+      }
     }
     else if (temp === 'AC') {
       setState(0);
@@ -33,15 +24,24 @@ const Calculator = () => {
     }
     else if (temp === 'LC') {
       const slicedStr = state && state.slice(0, -1);
-      state.length === 1 ? setState(0) : setState(slicedStr)
-      setRes(0)
+      if (state.length === 1) {
+        setState(0)
+        setRes(0)
+      }
+      else if (state.endsWith('+') || state.endsWith('-') || state.endsWith('*') || state.endsWith('/')) {
+        setRes(0)
+        setState(slicedStr)
+      }
+      else{
+        setState(slicedStr)
+        setRes(0)
+      }
     }
     else {
       if (specialChars.test(temp)) {
         let ch = state[(state.length) - 1]
         const s = state && (specialChars.test(ch) ? state.replace(ch, temp) : state.concat(temp))
         setState(s)
-        // console.log(s)
       }
       else {
         setState(state ? state.concat(temp) : temp)
