@@ -6,17 +6,29 @@ const Calculator = () => {
   const [state, setState] = useState(0)
   const [res, setRes] = useState(0)
 
+  // useEffect(() => {
+  //   console.log(state)
+  //   // let ch = state[state.length - 1]
+  //   // let str = state.slice(0, -1)
+  //   // specialChars.test(ch) && setState(str)
+  //   // setRes(eval(state))
+  // }, [state])
+
   const handleBtn = (e) => {
     let temp = e.target.value
     if (temp === '=') {
       if (state.endsWith('+') || state.endsWith('-') || state.endsWith('*') || state.endsWith('/')) {
         const newState = state.slice(0, -1)
         // setState(newState)
-      setRes(eval(newState))
+        setRes(eval(newState))
       }
-      else{
+      else {
         setRes(eval(state))
       }
+      // let ch = state[state.length - 1]
+      // let str = state.slice(0, -1)
+      // specialChars.test(ch) && setState(str)
+      // console.log(res)
     }
     else if (temp === 'AC') {
       setState(0);
@@ -29,12 +41,12 @@ const Calculator = () => {
         setRes(0)
       }
       else if (state.endsWith('+') || state.endsWith('-') || state.endsWith('*') || state.endsWith('/')) {
-        setRes(0)
+        setRes(eval(slicedStr))
         setState(slicedStr)
       }
-      else{
+      else {
         setState(slicedStr)
-        setRes(0)
+        setRes(eval(state))
       }
     }
     else {
